@@ -1,0 +1,4 @@
+([('renombrar_archivos',
+   '/Users/jmiguelmangas/Code/PYTHON '
+   'SCRIPT/script_renombrar/dist/renombrar_archivos',
+   'EXECUTABLE')],)
