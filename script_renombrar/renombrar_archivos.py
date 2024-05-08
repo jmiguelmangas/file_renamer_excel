@@ -16,20 +16,28 @@ def rename_files():
 
     num_rows_excel = sheet.max_row
 
-    files = os.listdir(folder_path)
-    num_files = len(files)
+    # Verificar nombres duplicados en el archivo Excel
+    names_set = set()
+    for i in range(2, num_rows_excel + 1):
+        name = sheet.cell(row=i, column=2).value
+        if name in names_set:
+            messagebox.showerror("Error", f"Nombre duplicado encontrado en la fila {i}.")
+            return
+        names_set.add(name)
+
+    num_files = len([filename for filename in os.listdir(folder_path) if filename.endswith('.wav')])
 
     if num_files != num_rows_excel:
-        messagebox.showerror("Error", "El número de archivos en la carpeta no coincide con el número de filas menos una en el archivo Excel.")
+        messagebox.showerror("Error", "El número de archivos en la carpeta no coincide con el número de filas en el archivo Excel.")
         return
 
-    for i in range(1, num_rows_excel + 1):
-        new_filename = sheet.cell(row=i, column=2).value
-        if new_filename:
-            old_file_path = os.path.join(folder_path, f"{i:03d}.wav")
-            new_file_path = os.path.join(folder_path, f"{new_filename}.wav")
-            os.rename(old_file_path, new_file_path)
-
+    for i, filename in enumerate(os.listdir(folder_path)):
+        if filename.endswith('.wav'):
+            new_filename = sheet.cell(row=i+1, column=2).value
+            if new_filename:
+                old_file_path = os.path.join(folder_path, filename)
+                new_file_path = os.path.join(folder_path, f"{new_filename}.wav")
+                os.rename(old_file_path, new_file_path)
 
     messagebox.showinfo("Éxito", "Proceso completado con éxito.")
 
