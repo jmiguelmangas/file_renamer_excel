@@ -18,6 +18,13 @@ Requisitos:
 Python 3.x
 Biblioteca openpyxl
 
+Crear archivos de ejemplo:
+
+Ejecuta creator.py para crear una carpeta con archivos
+Ejemplo de uso:
+
+python creator.py 50 carpetaEjemplo  -> 50 es el numero de archivos a crear
+
 Ejemplo de Uso:
 
 python renombrar_archivos.py archivo_excel.xlsx carpeta_ejemplo
@@ -42,6 +49,11 @@ If the verification is successful, the files will be renamed automatically.
 Requirements:
 Python 3.x
 openpyxl library
+
+Creating Sample Folder:
+Run creator.py for creating a folder with sample files to be renamed:
+
+python creator.py 50 sample folder -> 50 is the number of files
 
 Usage Example:
 
